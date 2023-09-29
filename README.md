@@ -64,25 +64,26 @@ GET /api/service/cro HTTP/1.1
 Host: 192.168.3.101:8081
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.19045; ru-RU) PowerShell/7.3.7
 
-Службу cron нужно no
 GET /api/service/cron HTTP/1.1
 Host: 192.168.3.101:8081
 Status: no
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.19045; ru-RU) PowerShell/7.3.7
 
-Службу cron нужно stop
 GET /api/service/cron HTTP/1.1
 Host: 192.168.3.101:8081
 Status: stop
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.19045; ru-RU) PowerShell/7.3.7
 
-Службу cron нужно start
 GET /api/service/cron HTTP/1.1
 Host: 192.168.3.101:8081
 Status: start
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.19045; ru-RU) PowerShell/7.3.7
 
 GET /api/service/cron HTTP/1.1
+Host: 192.168.3.101:8081
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.19045; ru-RU) PowerShell/7.3.7
+
+GET /api/service/syslog HTTP/1.1
 Host: 192.168.3.101:8081
 User-Agent: Mozilla/5.0 (Windows NT 10.0; Microsoft Windows 10.0.19045; ru-RU) PowerShell/7.3.7
 ```
