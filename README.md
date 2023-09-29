@@ -21,6 +21,10 @@ Supported only the GET method for **PowerShell 7 (Invoke-RestMethod or Invoke-We
 
 ![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/powershell-example.jpg)
 
+### Disk endpoint:
+
+![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/disk-endpoint.jpg)
+
 ### Bad Example:
 
 ![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/bad-example.jpg)
