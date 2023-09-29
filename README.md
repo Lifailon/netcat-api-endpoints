@@ -19,4 +19,12 @@ Supported only the GET method for **PowerShell 7 (Invoke-RestMethod or Invoke-We
 
 ### Example:
 
-![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/example.jpg)
+![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/powershell-example.jpg)
+
+### Bad Example:
+
+![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/bad-example.jpg)
+
+### Netcat jobs work exaple:
+
+![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/jobs-example.jpg)
