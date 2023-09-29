@@ -1,6 +1,6 @@
 ## NC-REST-Endpoints
 
-This is a simple netcat server that accepts and processes endpoint requests to manage Linux-based services (systemctl).
+This is a simple netcat server that accepts and processes endpoint requests REST API to manage Linux-based services via systemctl.
 
 Supported only the GET method for **PowerShell 7 (Invoke-RestMethod or Invoke-WebRequest)**.
 
