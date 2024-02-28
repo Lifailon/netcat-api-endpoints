@@ -1,5 +1,4 @@
 #!/bin/bash
-# Source: https://github.com/Lifailon/NC-REST-Endpoints
 port=8081
 header_ok="HTTP/1.1 200 OK\nContent-Type: application/json\n\n"
 while true
@@ -8,9 +7,14 @@ do
     request=$(echo "$request_in" | head -n 1)
     method=$(echo "$request" | cut -d " " -f 1)
     endpoint=$(echo "$request" | cut -d " " -f 2)
-    ### Headers
-    header_request=$(echo "$request_in" | head -n 3)  # for powershell (line -1 for -Body)
-    #header_request=$(echo "$request_in" | tail -n 2) # for curl (line -2 for -H and line -1 for -d)
+    ### Get headers
+    if [[ "$request_in" == *"curl"* ]]; then
+        header_request=$(echo "$request_in" | tail -n 2) # for curl (line -2 for -H and line -1 for -d)
+    elif [[ "$request_in" == *"PowerShell"* ]]; then
+        header_request=$(echo "$request_in" | head -n 3) # for powershell (line -1 for -Body)
+    else
+        header_request=""
+    fi
     if [[ $header_request == *"Status: "* ]]
         then
         status=$(echo $header_request | sed -r "s/.+:\s+//")
@@ -109,3 +113,6 @@ done
 # irm http://192.168.3.101:8081/api/service/cron -Method Get -Headers @{"Status" = "restart"}
 # irm http://192.168.3.101:8081/api/service/cron -Method Get -Headers @{"Status" = "stop"}
 # irm http://192.168.3.101:8081/api/service/cron -Method Get -Headers @{"Status" = "start"}
+# Curl Example Request:
+# curl http://192.168.3.101:8081/api/service/cron
+# curl http://192.168.3.101:8081/api/service/cron -H "Status: restart"
