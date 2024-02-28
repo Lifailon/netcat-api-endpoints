@@ -8,24 +8,16 @@ while true; do
     request=$(echo "$request_in" | head -n 1)
     method=$(echo "$request" | cut -d " " -f 1)
     endpoint=$(echo "$request" | cut -d " " -f 2)
-    ### Get the headers
-    if [[ "$request_in" == *"curl"* ]]; then
-        header_request=$(echo "$request_in" | tail -n 2) # for curl (line -2 for -H and line -1 for -d)
-    elif [[ "$request_in" == *"PowerShell"* ]]; then
-        header_request=$(echo "$request_in" | head -n 3) # for powershell (line -1 for -Body)
-    else
-        header_request=""
-    fi
-    ### Check for status header
-    if [[ $header_request == *"Status: "* ]]; then
-        status=$(echo $header_request | sed -r "s/.+:\s+//")
+    ### Get Status from Headers and check
+    if [[ $request_in == *"Status: "* ]]; then
+        status=$(echo "$request_in" | grep "Status:" | awk '{print $2}')
         check_status="true"
     else
         check_status="false"
     fi
     ### Authorization
     if [[ $auth == "true" ]]; then
-        cred_server=$(echo "$request_in" | grep -o "Authorization: Basic .*" | awk '{print $3}' | tr -d '[:space:]')
+        cred_server=$(echo "$request_in" | grep "Authorization: Basic" | awk '{print $3}' | tr -d '[:space:]')
         cred_client=$(echo -n "$user:$pass" | base64 | tr -d '[:space:]')
         if [[ $cred_server == $cred_client ]]; then
             auth_status="true"
@@ -107,10 +99,14 @@ while true; do
 done
 
 # PowerShell Example Request:
-# irm http://192.168.3.101:8081/api/service/cron -Method Get
-# irm http://192.168.3.101:8081/api/service/cron -Method Get -Headers @{"Status" = "restart"}
-# irm http://192.168.3.101:8081/api/service/cron -Method Get -Headers @{"Status" = "stop"}
-# irm http://192.168.3.101:8081/api/service/cron -Method Get -Headers @{"Status" = "start"}
+# $user = "rest"
+# $pass = "api"
+# $EncodingCred = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes("${user}:${pass}"))
+# $Headers = @{"Authorization" = "Basic ${EncodingCred}"}
+# Invoke-RestMethod http://192.168.3.101:8081/api/service/cron -Method Get -Headers $Headers
+# Invoke-RestMethod http://192.168.3.101:8081/api/service/cron -Method Get -Headers $($Headers + @{"Status" = "stop"})
+# Invoke-RestMethod http://192.168.3.101:8081/api/service/cron -Method Get -Headers $($Headers + @{"Status" = "start"})
+# Invoke-RestMethod http://192.168.3.101:8081/api/service/cron -Method Get -Headers $($Headers + @{"Status" = "restart"})
 # Curl Example Request:
 # curl http://192.168.3.101:8081/api/service/cron
 # curl http://192.168.3.101:8081/api/service/cron -u rest:api
