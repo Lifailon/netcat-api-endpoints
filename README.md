@@ -24,16 +24,16 @@ Supported only the GET method for **PowerShell 7 (Invoke-RestMethod or Invoke-We
 
 ### Example:
 
-![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/powershell-example.jpg)
+![Image alt](https://github.com/Lifailon/netcat-api-endpoints/blob/rsa/screen/powershell-example.jpg)
 
 ### Disk endpoint:
 
-![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/disk-endpoint.jpg)
+![Image alt](https://github.com/Lifailon/netcat-api-endpoints/blob/rsa/screen/disk-endpoint.jpg)
 
 ### Bad Example:
 
-![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/bad-example.jpg)
+![Image alt](https://github.com/Lifailon/netcat-api-endpoints/blob/rsa/screen/bad-example.jpg)
 
 ### Netcat jobs work example:
 
-![Image alt](https://github.com/Lifailon/NC-REST-Endpoints/blob/rsa/screen/jobs-example.jpg)
+![Image alt](https://github.com/Lifailon/netcat-api-endpoints/blob/rsa/screen/jobs-example.jpg)
