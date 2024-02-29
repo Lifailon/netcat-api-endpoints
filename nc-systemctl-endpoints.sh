@@ -17,8 +17,8 @@ while true; do
     fi
     ### Authorization
     if [[ $auth == "true" ]]; then
-        cred_server=$(echo "$request_in" | grep "Authorization: Basic" | awk '{print $3}' | tr -d '[:space:]')
-        cred_client=$(echo -n "$user:$pass" | base64 | tr -d '[:space:]')
+        cred_server=$(echo -n "$user:$pass" | base64 | tr -d '[:space:]')
+        cred_client=$(echo "$request_in" | grep "Authorization: Basic" | awk '{print $3}' | tr -d '[:space:]')
         if [[ $cred_server == $cred_client ]]; then
             auth_status="true"
         else
